@@ -8,6 +8,7 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        
 
         <!-- Favion -->
 
@@ -34,46 +35,44 @@
 
 body {
   background-color: whitesmoke;
-  font-family: 'Noto Sans JP', sans-serif;
-  font-weight: 500;
-  margin-top: 15px;
-  margin-left: 30px;
+  position:relative
 }
 
-td{
-  vertical-align: top;
+#cameraWrap {
+  border-color: black;
+  height: 812px;
+  width: 375px;
 }
 
 #videoContainer {
   border: 5px solid;
   border-color: black;
+  height: 812px;
+  width: 375px;
 }
 
 #video {
-	background-color: black;
+  background-color: black;
+  height: 812px;
+  width: 375px;
 }
 
 #hiddenContainer {
   display: none;
 }
 
-#titleText {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 15px;
-}
-
-#descriptionText {
-  font-size: 16px;
-  margin-bottom: 15px;
-}
-
 #flipCameraImage {
   z-index: 2;
   position: absolute;
   opacity: 0.3;
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 0px;
+  margin-top: 0px;
+
+}
+
+#mapWrap {
+    z-index: 3;
+    position: absolute;
 }
 
 #decodedData {
@@ -114,100 +113,54 @@ div.operationContent {
 
 #copyWriteText a { color: black } 
 
+/*レスポンシブスマホ用*/
+@media screen and (max-width: 479px) {
+
+}
+
 </style>
 
 </head>
 
     <body>        
         <!-- Title -->
-        <div id="titleText" class="titleText"> 
-            Field Survey Web Application
-        </div>
 
         <!-- //--------------------------------------------------------------------------------------/ --> 
         <!-- //----------------------------------[カメラに関するHTML]----------------------------------/ --> 
         <!-- //--------------------------------------------------------------------------------------/ --> 
 
         <!-- Description -->
-        <div id="descriptionText" class="descriptionText"> 
-            HTML5でWebcamを扱うテスト。キャプチャしてPNGファイルとしてダウンロードできるよ。<br>
-            HTML5 Webcam function tester. You can also capture and download image as a PNG file.
-        </div>
-
-        <!-- Contents -->
-        <table><tr>
-            <!-- Left region: Video Container -->
-            <td>
-                <!-- Streaming video -->
-
-                <div>
-
-
-                    <!--
-                        <input type="button" id="permit" value="SafariでDeviceOrientationを許可"/>
-                    <p>方角：<span id="direction"></span></p>
-                    -->
-
-                    <ul>
-                        <input type="button" id="permit" value="SafariでDeviceOrientationを許可"/>
-                        <li>【方角】<span id="direction"></span></li>
-                    </ul>
-
-                </div>
-
+        <div>
+            <div id="cameraWrap">
                 <div id="videoContainer">
-                    <img id="flipCameraImage" src="./images/flipCamera.png" width="60px">
+                    <!-- <img id="flipCameraImage" src="./images/flipCamera.png" width="60px"> -->
                     <video playsinline muted autoplay id="video"></video>
                 </div>
-                
-                <!-- Hidden items for capture => download -->
+
                 <div id="hiddenContainer">
                     <a id="hiddenLink"></a>
                     <canvas id="hiddenCanvas"></canvas>
                     <canvas id="hiddenCanvasForQR"></canvas>
                 </div>
-                
-            </td>
+            </div>
 
-            <!-- Right region: Operation Region -->
-            <td>
-                <div id="operation" class="operation">
-                    <iframe id="mapURL" src="https://maps.gsi.go.jp/?hc=hic#14/35.636197/139.838276/&base=std&ls=std&disp=1&vs=c1j0h0k0l0u0t0z0r0s0m0f1" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe><br>
-                    <button onclick="test()">現在地と標高を取得</button>
-                </div>
+            <div id="map">
+                <iframe id="mapURL" src="https://maps.gsi.go.jp/?hc=hic#14/35.636197/139.838276/&base=std&ls=std&disp=1&vs=c1j0h0k0l0u0t0z0r0s0m0f1" width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
 
-
-                <div id="operation" class="operation"> 
-                    <div class="operationTitleTextTop"> 
-                        1. Connect WebCam & give a permission.
-                    </div>
-                    <div class="operationContent"> 
-                        <img src="./images/permission.png" width="300px">
-                    </div>
-
-                    <div class="operationTitleText"> 
-                        2. Anytime, you can capture & download it.
-                    </div>
-                    <div class="operationContent"> 
-                        <button class="mui-btn mui-btn--small mui-btn--primary mui-btn--raised" id="btCapture" disabled="true">Capture</button>
-                    </div>
-                    
-                    
-                </div>
-            </td>
-        </tr></table>
+            <div id="button">
+                <button onclick="test()"></button>
+                <button onclick="test()"></button>
+                <button onclick="test()"></button>
+            </div>
+        </div>
 
 
         <!-- //------------------------------------------------------------------------------// --> 
         <!-- //----------------------------------コピーライト----------------------------------// --> 
         <!-- //------------------------------------------------------------------------------// --> 
 
-        <div id="copyWriteText"> 
-            <a href="https://github.com/tetunori/HTML5WebcamTester" target="_blank">Hosted on GitHub</a>. 
-            Version 1.2.0. Copyright (c) 2020 Tetsunori NAKAYAMA. MIT License.
-            <br>
-            QR Code is registered trademarks of DENSO WAVE INCORPORATED in Japan and in other countries.
-        </div>  
+        
 
 
 
