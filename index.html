@@ -35,10 +35,10 @@
 
 body {
   background-color: whitesmoke;
-  font-family: 'Noto Sans JP', sans-serif;
+  position:relative
 }
 
-#wrap {
+#cameraWrap {
   border-color: black;
   height: 812px;
   width: 375px;
@@ -69,6 +69,11 @@ body {
   margin-top: 0px;
   height: 812px;
   width: 375px;
+}
+
+#mapWrap {
+    z-index: 3;
+    position: absolute;
 }
 
 #decodedData {
@@ -127,9 +132,9 @@ div.operationContent {
 
         <!-- Description -->
         <div>
-            <div id="wrap">
+            <div id="cameraWrap">
                 <div id="videoContainer">
-                    <img id="flipCameraImage" src="./images/flipCamera.png" width="60px">
+                    <!-- <img id="flipCameraImage" src="./images/flipCamera.png" width="60px"> -->
                     <video playsinline muted autoplay id="video"></video>
                 </div>
 
@@ -140,8 +145,8 @@ div.operationContent {
                 </div>
             </div>
 
-            <div>
-
+            <div id="map">
+                <iframe id="mapURL" src="https://maps.gsi.go.jp/?hc=hic#14/35.636197/139.838276/&base=std&ls=std&disp=1&vs=c1j0h0k0l0u0t0z0r0s0m0f1" width="200" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
 
